@@ -19,7 +19,7 @@ pub async fn sqlx_connection() -> sqlx::Pool<sqlx::Postgres> {
     use sqlx::postgres::PgPoolOptions;
     dotenv::dotenv().ok();
     let pool = PgPoolOptions::new()
-        .max_connections(50)
+        .max_connections(8)
         .connect(&env::var("DATABASE_URL")
         .expect("DATABASE_URL must be set")).await
         .expect("Failed to connect to database");
