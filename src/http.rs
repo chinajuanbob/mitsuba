@@ -97,6 +97,13 @@ impl HttpClient {
                 counter!("http_404", 1);
                 Err(backoff::Error::Permanent(resp.error_for_status().unwrap_err()))
             },
+            StatusCode::FORBIDDEN => {
+                error!("Error fetching {} (Status: 403)", url);
+                counter!("http_403", 1);
+                Err(backoff::Error::Permanent(
+                    resp.error_for_status().unwrap_err(),
+                ))
+            },
             _ => {
                 warn!("Retry fetching {} after bad status code (Status: {})", url, resp.status());
                 counter!("http_warn", 1);
