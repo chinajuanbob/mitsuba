@@ -47,7 +47,7 @@ rust-s3 = { version = "0.31.0", features = ["tokio-rustls-tls"], default-feature
 dashmap = "5.3.3"
 weighted-rs = "0.1.3"
 metrics = "0.18.1"
-metrics-exporter-prometheus = "0.9.0"
+metrics-exporter-prometheus = "0.16.0"
 futures = "0.3.21"
 log4rs = "1.1.1"
 
